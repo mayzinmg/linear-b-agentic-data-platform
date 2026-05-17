@@ -1,0 +1,2 @@
+tablet_id,site,source_type,script,record_category,commodity_group,animal_sources,recipient_roles,has_numbers,notes
+PY_Ub_1318,Pylos,clay_tablet,Linear B,administrative_distribution,animal_hides,"bovine,pig,deer","shoe_makers,saddle_makers",true,"Distribution record involving hides and craft workers"
