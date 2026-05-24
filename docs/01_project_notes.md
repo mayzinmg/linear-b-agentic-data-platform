@@ -61,3 +61,14 @@ Analytical fields tell us what we can study from the tablet.
 For example, tablet_id and site are metadata.
 Animal sources, commodity group, and recipient roles are analytical fields.
 This separation helps us organize the data clearly.
+
+## Step 2A
+DĀMOS is treated as the primary academic reference corpus for this project. However, the first prototype uses a simpler CSV dataset so that the data engineering workflow can be built and tested before integrating a more complex research corpus.
+
+## Step 2B — Silver Layer Cleaning
+
+The Silver layer was created from the Bronze table by standardizing column names, trimming unnecessary spaces, and removing confirmed exact duplicate records.
+
+The original Bronze table preserves all source rows from the external dataset. Before removing duplicates, a duplicate audit table was created to show which records appeared more than once. This keeps the cleaning process transparent and traceable.
+
+The Silver table uses clearer field names such as `tablet_id`, `site_code`, `tablet_series`, `transliterated_text`, and `original_inscription`. These names make the dataset easier to understand and prepare it for later analysis in the Gold layer.
