@@ -141,7 +141,29 @@ default_args=default_args,
         python_callable=run_sql_file,
         op_args=["03_create_gold.sql"]
     )
-    
+    create_damos_bronze = PythonOperator(
+        task_id="create_damos_bronze_layer",
+        python_callable=run_sql_file,
+        op_args=["04_create_bronze_damos.sql"],
+    )
+
+    create_damos_silver = PythonOperator(
+        task_id="create_damos_silver_layer",
+        python_callable=run_sql_file,
+        op_args=["05_create_silver_damos.sql"],
+    )
+
+    create_damos_gold = PythonOperator(
+        task_id="create_damos_gold_layer",
+        python_callable=run_sql_file,
+        op_args=["06_create_gold_damos.sql"],
+    )
+
+    create_combined_enrichment = PythonOperator(
+        task_id="create_combined_enrichment_layer",
+        python_callable=run_sql_file,
+        op_args=["07_create_gold_tablet_damos_enrichment.sql"],
+    )
     export_evidence = PythonOperator(
         task_id="export_pipeline_evidence",
         python_callable=export_pipeline_evidence,
