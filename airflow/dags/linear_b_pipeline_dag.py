@@ -36,6 +36,8 @@ def export_pipeline_evidence()-> None:
     data_quality_path= EVIDENCE_DIR / "data_quality_summary.csv"
     duplicate_audit_path = EVIDENCE_DIR / "duplicate_audit_summary.csv"
     run_summary_path = EVIDENCE_DIR / "pipeline_run_summary.csv"
+    damos_match_coverage_path = EVIDENCE_DIR / "damos_match_coverage.csv"
+    damos_word_type_path = EVIDENCE_DIR / "damos_word_type_summary.csv"
 
     with duckdb.connect(str(DB_PATH)) as conn:
         conn.execute(f"""
@@ -44,34 +46,56 @@ def export_pipeline_evidence()-> None:
                 FROM bronze_linear_b_tablets
 
                 UNION ALL
-
                 SELECT 'silver_linear_b_tablets' AS table_name, COUNT(*) AS row_count
                 FROM silver_linear_b_tablets
 
                 UNION ALL
-
                 SELECT 'silver_duplicate_audit' AS table_name, COUNT(*) AS row_count
                 FROM silver_duplicate_audit
 
                 UNION ALL
-
                 SELECT 'gold_tablets_by_site' AS table_name, COUNT(*) AS row_count
                 FROM gold_tablets_by_site
 
                 UNION ALL
-
                 SELECT 'gold_tablets_by_series' AS table_name, COUNT(*) AS row_count
                 FROM gold_tablets_by_series
 
                 UNION ALL
-
                 SELECT 'gold_site_series_summary' AS table_name, COUNT(*) AS row_count
                 FROM gold_site_series_summary
 
                 UNION ALL
-
                 SELECT 'gold_data_quality_summary' AS table_name, COUNT(*) AS row_count
                 FROM gold_data_quality_summary
+
+                UNION ALL
+                SELECT 'bronze_damos_search_tokens' AS table_name, COUNT(*) AS row_count
+                FROM bronze_damos_search_tokens
+
+                UNION ALL
+                SELECT 'silver_damos_tokens' AS table_name, COUNT(*) AS row_count
+                FROM silver_damos_tokens
+
+                UNION ALL
+                SELECT 'gold_damos_tokens_by_word_type' AS table_name, COUNT(*) AS row_count
+                FROM gold_damos_tokens_by_word_type
+
+                UNION ALL
+                SELECT 'gold_damos_tokens_by_site' AS table_name, COUNT(*) AS row_count
+                FROM gold_damos_tokens_by_site
+
+                UNION ALL
+                SELECT 'gold_damos_tokens_by_series' AS table_name, COUNT(*) AS row_count
+                FROM gold_damos_tokens_by_series
+
+                UNION ALL
+                SELECT 'gold_damos_tablet_token_summary' AS table_name, COUNT(*) AS row_count
+                FROM gold_damos_tablet_token_summary
+
+                UNION ALL
+                SELECT 'gold_tablet_damos_enrichment' AS table_name, COUNT(*) AS row_count
+                FROM gold_tablet_damos_enrichment
             )
             TO '{row_counts_path.as_posix()}'
             WITH (HEADER, DELIMITER ',');
@@ -95,6 +119,29 @@ def export_pipeline_evidence()-> None:
                 FROM silver_duplicate_audit
             )
             TO '{duplicate_audit_path.as_posix()}'
+            WITH (HEADER, DELIMITER ',');
+        """)
+
+        conn.execute(f"""
+            COPY (
+                SELECT
+                    damos_match_status,
+                    COUNT(*) AS tablet_count,
+                    ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS percentage
+                FROM gold_tablet_damos_enrichment
+                GROUP BY damos_match_status
+                ORDER BY tablet_count DESC
+            )
+            TO '{damos_match_coverage_path.as_posix()}'
+            WITH (HEADER, DELIMITER ',');
+        """)
+
+        conn.execute(f"""
+            COPY (
+                SELECT *
+                FROM gold_damos_tokens_by_word_type
+            )
+            TO '{damos_word_type_path.as_posix()}'
             WITH (HEADER, DELIMITER ',');
         """)
 
@@ -169,4 +216,6 @@ default_args=default_args,
         python_callable=export_pipeline_evidence,
     )
 
-    create_bronze >> create_silver >> create_gold >> export_evidence
+    create_bronze >> create_silver >> create_gold
+    create_gold >> create_damos_bronze >> create_damos_silver >> create_damos_gold
+    create_damos_gold >> create_combined_enrichment >> export_evidence

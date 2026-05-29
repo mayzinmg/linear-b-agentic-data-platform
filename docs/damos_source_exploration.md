@@ -41,3 +41,9 @@ The first DĀMOS integration will use a controlled snapshot approach. Automated 
 This project does not claim to ingest the complete DĀMOS corpus. The first DĀMOS integration uses a controlled search-result snapshot exported from the DĀMOS interface. This snapshot is used to explore source structure, token-level metadata, source-version tracking, and evidence-based interpretation.
 
 Because the snapshot may not represent the entire corpus, analytical outputs should be interpreted as findings from the selected snapshot only. Future work may expand the integration if a stable and appropriate full export method becomes available.
+
+## DĀMOS Match Coverage
+
+The DĀMOS snapshot was joined with the tablet-level InsiderPhD dataset using a normalized tablet key. In the current snapshot, 2,738 tablet records were matched with DĀMOS token-level metadata, while 2,109 records were not matched.
+
+The unmatched records should not be interpreted as missing from DĀMOS entirely, because the current DĀMOS input is a search-result snapshot rather than a complete corpus export.

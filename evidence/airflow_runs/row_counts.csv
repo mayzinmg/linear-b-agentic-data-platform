@@ -6,3 +6,10 @@ gold_tablets_by_site,6
 gold_tablets_by_series,159
 gold_site_series_summary,165
 gold_data_quality_summary,1
+bronze_damos_search_tokens,43730
+silver_damos_tokens,43730
+gold_damos_tokens_by_word_type,31
+gold_damos_tokens_by_site,7
+gold_damos_tokens_by_series,71
+gold_damos_tablet_token_summary,5692
+gold_tablet_damos_enrichment,4847
