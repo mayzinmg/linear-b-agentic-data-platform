@@ -10,6 +10,7 @@ from airflow.operators.python import PythonOperator
 PROJECT_DIR = Path(os.getenv("LINEAR_B_PROJECT_DIR","/opt/airflow/project"))
 DB_PATH = PROJECT_DIR / "linear_b.duckdb"
 SQL_DIR = PROJECT_DIR / "sql"
+EVIDENCE_DIR = PROJECT_DIR / "evidence" / "airflow_runs"
 
 def run_sql_file(sql_file_name:str)-> None:
     sql_path= SQL_DIR / sql_file_name
@@ -19,6 +20,86 @@ def run_sql_file(sql_file_name:str)-> None:
 
     with duckdb.connect(str(DB_PATH)) as conn:
         conn.execute(sql_text)
+
+def export_pipeline_evidence()-> None:
+    EVIDENCE_DIR.mkdir(parents=True,exist_ok=True)
+
+    row_counts_path=  EVIDENCE_DIR / "row_counts.csv"
+    data_quality_path= EVIDENCE_DIR / "data_quality_summary.csv"
+    duplicate_audit_path = EVIDENCE_DIR / "duplicate_audit_summary.csv"
+    run_summary_path = EVIDENCE_DIR / "pipeline_run_summary.csv"
+
+    with duckdb.connect(str(DB_PATH)) as conn:
+        conn.execute(f"""
+            COPY (
+                SELECT 'bronze_linear_b_tablets' AS table_name, COUNT(*) AS row_count
+                FROM bronze_linear_b_tablets
+
+                UNION ALL
+
+                SELECT 'silver_linear_b_tablets' AS table_name, COUNT(*) AS row_count
+                FROM silver_linear_b_tablets
+
+                UNION ALL
+
+                SELECT 'silver_duplicate_audit' AS table_name, COUNT(*) AS row_count
+                FROM silver_duplicate_audit
+
+                UNION ALL
+
+                SELECT 'gold_tablets_by_site' AS table_name, COUNT(*) AS row_count
+                FROM gold_tablets_by_site
+
+                UNION ALL
+
+                SELECT 'gold_tablets_by_series' AS table_name, COUNT(*) AS row_count
+                FROM gold_tablets_by_series
+
+                UNION ALL
+
+                SELECT 'gold_site_series_summary' AS table_name, COUNT(*) AS row_count
+                FROM gold_site_series_summary
+
+                UNION ALL
+
+                SELECT 'gold_data_quality_summary' AS table_name, COUNT(*) AS row_count
+                FROM gold_data_quality_summary
+            )
+            TO '{row_counts_path.as_posix()}'
+            WITH (HEADER, DELIMITER ',');
+        """)
+
+        conn.execute(f"""
+            COPY (
+                SELECT *
+                FROM gold_data_quality_summary
+            )
+            TO '{data_quality_path.as_posix()}'
+            WITH (HEADER, DELIMITER ',');
+        """)
+
+        conn.execute(f"""
+            COPY (
+                SELECT
+                    COUNT(*) AS duplicate_group_count,
+                    SUM(duplicate_count - 1) AS duplicate_extra_row_count,
+                    MAX(duplicate_count) AS highest_duplicate_count
+                FROM silver_duplicate_audit
+            )
+            TO '{duplicate_audit_path.as_posix()}'
+            WITH (HEADER, DELIMITER ',');
+        """)
+
+        conn.execute(f"""
+            COPY (
+                SELECT
+                    'linear_b_bronze_silver_gold_pipeline' AS pipeline_name,
+                    CURRENT_TIMESTAMP AS exported_at,
+                    '{DB_PATH.as_posix()}' AS database_path
+            )
+            TO '{run_summary_path.as_posix()}'
+            WITH (HEADER, DELIMITER ',');
+        """)
 
 with DAG(
 dag_id="linear_b_bronze_silver_gold_pipeline",
@@ -47,4 +128,11 @@ tags=["linear-b", "duckdb", "data-engineering"],
         op_args=["03_create_gold.sql"]
     )
     
-    create_bronze >> create_silver >> create_gold
+    export_evidence = PythonOperator(
+        task_id="export_pipeline_evidence",
+        python_callable=export_pipeline_evidence,
+    )
+
+    
+    
+    create_bronze >> create_silver >> create_gold >> export_pipeline_evidence
