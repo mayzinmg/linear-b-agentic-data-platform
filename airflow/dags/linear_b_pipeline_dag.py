@@ -18,8 +18,16 @@ def run_sql_file(sql_file_name:str)-> None:
         raise FileNotFoundError(f"SQL file not found:{sql_path}")
     sql_text=sql_path.read_text(encoding="utf-8")
 
-    with duckdb.connect(str(DB_PATH)) as conn:
-        conn.execute(sql_text)
+    current_dir = os.getcwd()
+
+    try:
+        os.chdir(PROJECT_DIR)
+
+        with duckdb.connect(str(DB_PATH)) as conn:
+            conn.execute(sql_text)
+
+    finally:
+        os.chdir(current_dir)
 
 def export_pipeline_evidence()-> None:
     EVIDENCE_DIR.mkdir(parents=True,exist_ok=True)
@@ -133,6 +141,4 @@ tags=["linear-b", "duckdb", "data-engineering"],
         python_callable=export_pipeline_evidence,
     )
 
-    
-    
-    create_bronze >> create_silver >> create_gold >> export_pipeline_evidence
+    create_bronze >> create_silver >> create_gold >> export_evidence

@@ -1,0 +1,8 @@
+table_name,row_count
+bronze_linear_b_tablets,7370
+silver_linear_b_tablets,4847
+silver_duplicate_audit,797
+gold_tablets_by_site,6
+gold_tablets_by_series,159
+gold_site_series_summary,165
+gold_data_quality_summary,1
