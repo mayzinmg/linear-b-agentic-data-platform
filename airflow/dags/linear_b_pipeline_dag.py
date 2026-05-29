@@ -1,7 +1,7 @@
 from __future__ import annotations
 import os
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import duckdb
 from airflow import DAG
@@ -109,13 +109,19 @@ def export_pipeline_evidence()-> None:
             WITH (HEADER, DELIMITER ',');
         """)
 
+default_args = {
+    "retries": 2,
+    "retry_delay": timedelta(minutes=2),
+}
+
 with DAG(
 dag_id="linear_b_bronze_silver_gold_pipeline",
 description="Runs the Linear B Bronze, Silver, and Gold DuckDB pipeline.",
 start_date=datetime(2026,1,1),
-schedule=None,
+schedule="@weekly",
 catchup=False,
 tags=["linear-b", "duckdb", "data-engineering"],
+default_args=default_args,
 
 ) as dag:
     
