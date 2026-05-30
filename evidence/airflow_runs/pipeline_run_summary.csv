@@ -1,0 +1,2 @@
+pipeline_name,exported_at,database_path
+linear_b_bronze_silver_gold_pipeline,2026-05-29 08:46:13.194465+00,/opt/airflow/project/linear_b.duckdb
