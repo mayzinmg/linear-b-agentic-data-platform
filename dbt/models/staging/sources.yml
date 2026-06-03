@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: main
+    tables:
+      - name: bronze_linear_b_tablets
+      - name: bronze_damos_search_tokens

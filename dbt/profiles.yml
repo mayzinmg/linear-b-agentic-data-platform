@@ -1,0 +1,7 @@
+linear_b_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../linear_b.duckdb
+      threads: 4
