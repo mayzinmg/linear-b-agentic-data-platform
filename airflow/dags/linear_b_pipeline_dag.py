@@ -187,11 +187,12 @@ default_args=default_args,
     run_dbt_models = BashOperator(
     task_id="run_dbt_models",
     bash_command=(
-        "cd /opt/airflow/project/dbt && "
+       "cd /opt/airflow/project/dbt && "
         "rm -rf target logs && "
-        "dbt --no-partial-parse run --profiles-dir ."
-    ),
-)
+        "dbt --no-partial-parse run --profiles-dir . && "
+        "dbt --no-partial-parse test --profiles-dir ."
+        ),
+    )
     export_evidence = PythonOperator(
         task_id="export_pipeline_evidence",
         python_callable=export_pipeline_evidence,
