@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 import duckdb
 from airflow import DAG
 from airflow.providers.standard.operators.bash import BashOperator
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.python import PythonOperator
 
 PROJECT_DIR = Path(os.getenv("LINEAR_B_PROJECT_DIR","/opt/airflow/project"))
 DB_PATH = PROJECT_DIR / "linear_b.duckdb"
@@ -186,8 +186,12 @@ default_args=default_args,
     )
     run_dbt_models = BashOperator(
     task_id="run_dbt_models",
-    bash_command="cd /opt/airflow/project/dbt && dbt run --profiles-dir .",
-    )   
+    bash_command=(
+        "cd /opt/airflow/project/dbt && "
+        "rm -rf target logs && "
+        "dbt --no-partial-parse run --profiles-dir ."
+    ),
+)
     export_evidence = PythonOperator(
         task_id="export_pipeline_evidence",
         python_callable=export_pipeline_evidence,
