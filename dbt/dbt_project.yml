@@ -1,0 +1,12 @@
+name: 'linear_b_dbt'
+version: '1.0.0'
+config-version: 2
+
+profile: 'linear_b_dbt'
+
+model-paths: ["models"]
+
+models:
+  linear_b_dbt:
+    smoke:
+      +materialized: view

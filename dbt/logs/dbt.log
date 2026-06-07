@@ -1,0 +1,246 @@
+[0m00:59:46.457697 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002429F21A270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002429BF8B110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000242A05FFB10>]}
+
+
+============================== 00:59:46.467988 | c1d94cc5-882a-409d-8229-896b6adb7a2f ==============================
+[0m00:59:46.467988 [info ] [MainThread]: Running with dbt=1.11.11
+[0m00:59:46.468482 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': '.', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt debug --profiles-dir .', 'use_experimental_parser': 'False', 'log_path': 'D:\\Learning\\Agentic AI with Linear B\\linear-b-agentic-data-platform\\dbt\\logs'}
+[0m00:59:46.478141 [info ] [MainThread]: dbt version: 1.11.11
+[0m00:59:46.478573 [info ] [MainThread]: python version: 3.13.7
+[0m00:59:46.478899 [info ] [MainThread]: python path: D:\Learning\Agentic AI with Linear B\linear-b-agentic-data-platform\dbt\.venv\Scripts\python.exe
+[0m00:59:46.479404 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m00:59:46.573145 [info ] [MainThread]: Using profiles dir at .
+[0m00:59:46.573603 [info ] [MainThread]: Using profiles.yml file at .\profiles.yml
+[0m00:59:46.573952 [info ] [MainThread]: Using dbt_project.yml file at D:\Learning\Agentic AI with Linear B\linear-b-agentic-data-platform\dbt\dbt_project.yml
+[0m00:59:46.575639 [info ] [MainThread]: adapter type: duckdb
+[0m00:59:46.576047 [info ] [MainThread]: adapter version: 1.10.1
+[0m00:59:46.652197 [info ] [MainThread]: Configuration:
+[0m00:59:46.652627 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m00:59:46.652995 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m00:59:46.653372 [info ] [MainThread]: Required dependencies:
+[0m00:59:46.653689 [debug] [MainThread]: Executing "git --help"
+[0m00:59:46.699628 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   history    EXPERIMENTAL: Rewrite history\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m00:59:46.699996 [debug] [MainThread]: STDERR: "b''"
+[0m00:59:46.700173 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m00:59:46.700457 [info ] [MainThread]: Connection:
+[0m00:59:46.700746 [info ] [MainThread]:   database: linear_b
+[0m00:59:46.700966 [info ] [MainThread]:   schema: main
+[0m00:59:46.701166 [info ] [MainThread]:   path: ../linear_b.duckdb
+[0m00:59:46.701380 [info ] [MainThread]:   config_options: None
+[0m00:59:46.701587 [info ] [MainThread]:   extensions: None
+[0m00:59:46.701789 [info ] [MainThread]:   settings: {}
+[0m00:59:46.701974 [info ] [MainThread]:   external_root: .
+[0m00:59:46.702155 [info ] [MainThread]:   use_credential_provider: None
+[0m00:59:46.702334 [info ] [MainThread]:   attach: None
+[0m00:59:46.702517 [info ] [MainThread]:   filesystems: None
+[0m00:59:46.702688 [info ] [MainThread]:   remote: None
+[0m00:59:46.702928 [info ] [MainThread]:   plugins: None
+[0m00:59:46.703222 [info ] [MainThread]:   disable_transactions: False
+[0m00:59:46.703597 [info ] [MainThread]: Registered adapter: duckdb=1.10.1
+[0m00:59:46.838510 [debug] [MainThread]: Acquiring new duckdb connection 'debug'
+[0m00:59:46.946980 [debug] [MainThread]: Using duckdb connection "debug"
+[0m00:59:46.947233 [debug] [MainThread]: On debug: select 1 as id
+[0m00:59:46.947386 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m00:59:46.958077 [debug] [MainThread]: SQL status: OK in 0.011 seconds
+[0m00:59:46.958825 [debug] [MainThread]: On debug: Close
+[0m00:59:46.959084 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m00:59:46.959446 [info ] [MainThread]: [32mAll checks passed![0m
+[0m00:59:46.960143 [debug] [MainThread]: Command `dbt debug` succeeded at 00:59:46.960042 after 0.63 seconds
+[0m00:59:46.960366 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m00:59:46.960582 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000242A1857BB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000242A18F9EB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000242A17CC9E0>]}
+[0m00:59:46.960842 [debug] [MainThread]: Flushing usage events
+[0m00:59:48.058881 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m01:00:00.758687 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244B79A2270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244B477B110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244B9D73C50>]}
+
+
+============================== 01:00:00.761517 | 0b8f608c-93be-44be-acea-02a5d236fa30 ==============================
+[0m01:00:00.761517 [info ] [MainThread]: Running with dbt=1.11.11
+[0m01:00:00.762010 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': '.', 'use_colors': 'True', 'invocation_command': 'dbt run --profiles-dir . --select smoke_check', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'D:\\Learning\\Agentic AI with Linear B\\linear-b-agentic-data-platform\\dbt\\logs'}
+[0m01:00:00.924075 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '0b8f608c-93be-44be-acea-02a5d236fa30', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244B80C9220>]}
+[0m01:00:00.962280 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '0b8f608c-93be-44be-acea-02a5d236fa30', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244B9D93BD0>]}
+[0m01:00:00.963770 [info ] [MainThread]: Registered adapter: duckdb=1.10.1
+[0m01:00:01.104295 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m01:00:01.105196 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m01:00:01.105592 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '0b8f608c-93be-44be-acea-02a5d236fa30', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244B9E9ED50>]}
+[0m01:00:01.749710 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '0b8f608c-93be-44be-acea-02a5d236fa30', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244B79556D0>]}
+[0m01:00:01.784121 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Learning\Agentic AI with Linear B\linear-b-agentic-data-platform\dbt\target\manifest.json
+[0m01:00:01.786577 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Learning\Agentic AI with Linear B\linear-b-agentic-data-platform\dbt\target\semantic_manifest.json
+[0m01:00:01.796495 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '0b8f608c-93be-44be-acea-02a5d236fa30', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244BA5C0590>]}
+[0m01:00:01.796832 [info ] [MainThread]: Found 1 model, 485 macros
+[0m01:00:01.797237 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0b8f608c-93be-44be-acea-02a5d236fa30', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244BA355A50>]}
+[0m01:00:01.798215 [info ] [MainThread]: 
+[0m01:00:01.798530 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:00:01.798799 [info ] [MainThread]: 
+[0m01:00:01.799158 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m01:00:01.799813 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_linear_b'
+[0m01:00:01.841588 [debug] [ThreadPool]: Using duckdb connection "list_linear_b"
+[0m01:00:01.841858 [debug] [ThreadPool]: On list_linear_b: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "linear_b_dbt", "target_name": "dev", "connection_name": "list_linear_b"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"linear_b"'
+    
+  
+  
+[0m01:00:01.842026 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:00:01.853923 [debug] [ThreadPool]: SQL status: OK in 0.012 seconds
+[0m01:00:01.854969 [debug] [ThreadPool]: On list_linear_b: Close
+[0m01:00:01.855434 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_linear_b, now create_linear_b_main)
+[0m01:00:01.855765 [debug] [ThreadPool]: Creating schema "database: "linear_b"
+schema: "main"
+"
+[0m01:00:01.859157 [debug] [ThreadPool]: Using duckdb connection "create_linear_b_main"
+[0m01:00:01.859378 [debug] [ThreadPool]: On create_linear_b_main: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "linear_b_dbt", "target_name": "dev", "connection_name": "create_linear_b_main"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='linear_b'
+        and type='sqlite'
+    
+  
+[0m01:00:01.859564 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:00:01.860268 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m01:00:01.860965 [debug] [ThreadPool]: Using duckdb connection "create_linear_b_main"
+[0m01:00:01.861138 [debug] [ThreadPool]: On create_linear_b_main: BEGIN
+[0m01:00:01.861400 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m01:00:01.861574 [debug] [ThreadPool]: Using duckdb connection "create_linear_b_main"
+[0m01:00:01.861720 [debug] [ThreadPool]: On create_linear_b_main: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "linear_b_dbt", "target_name": "dev", "connection_name": "create_linear_b_main"} */
+
+    
+    
+        create schema if not exists "linear_b"."main"
+    
+[0m01:00:01.862101 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m01:00:01.862684 [debug] [ThreadPool]: On create_linear_b_main: COMMIT
+[0m01:00:01.862876 [debug] [ThreadPool]: Using duckdb connection "create_linear_b_main"
+[0m01:00:01.863049 [debug] [ThreadPool]: On create_linear_b_main: COMMIT
+[0m01:00:01.863336 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m01:00:01.863526 [debug] [ThreadPool]: On create_linear_b_main: Close
+[0m01:00:01.864634 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_linear_b_main'
+[0m01:00:01.868779 [debug] [ThreadPool]: Using duckdb connection "list_linear_b_main"
+[0m01:00:01.869018 [debug] [ThreadPool]: On list_linear_b_main: BEGIN
+[0m01:00:01.869165 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:00:01.869546 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m01:00:01.869732 [debug] [ThreadPool]: Using duckdb connection "list_linear_b_main"
+[0m01:00:01.869897 [debug] [ThreadPool]: On list_linear_b_main: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "linear_b_dbt", "target_name": "dev", "connection_name": "list_linear_b_main"} */
+select
+      'linear_b' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'main'
+    and lower(table_catalog) = 'linear_b'
+  
+[0m01:00:01.872396 [debug] [ThreadPool]: SQL status: OK in 0.002 seconds
+[0m01:00:01.873318 [debug] [ThreadPool]: On list_linear_b_main: ROLLBACK
+[0m01:00:01.874144 [debug] [ThreadPool]: Failed to rollback 'list_linear_b_main'
+[0m01:00:01.874338 [debug] [ThreadPool]: On list_linear_b_main: Close
+[0m01:00:01.875812 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0b8f608c-93be-44be-acea-02a5d236fa30', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244BA9901D0>]}
+[0m01:00:01.876085 [debug] [MainThread]: Using duckdb connection "master"
+[0m01:00:01.876225 [debug] [MainThread]: On master: BEGIN
+[0m01:00:01.876347 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:00:01.876659 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m01:00:01.876835 [debug] [MainThread]: On master: COMMIT
+[0m01:00:01.876989 [debug] [MainThread]: Using duckdb connection "master"
+[0m01:00:01.877131 [debug] [MainThread]: On master: COMMIT
+[0m01:00:01.877444 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m01:00:01.877690 [debug] [MainThread]: On master: Close
+[0m01:00:01.885221 [debug] [Thread-1 (]: Began running node model.linear_b_dbt.smoke_check
+[0m01:00:01.885612 [info ] [Thread-1 (]: 1 of 1 START sql view model main.smoke_check ................................... [RUN]
+[0m01:00:01.885975 [debug] [Thread-1 (]: Acquiring new duckdb connection 'model.linear_b_dbt.smoke_check'
+[0m01:00:01.886200 [debug] [Thread-1 (]: Began compiling node model.linear_b_dbt.smoke_check
+[0m01:00:01.889800 [debug] [Thread-1 (]: Writing injected SQL for node "model.linear_b_dbt.smoke_check"
+[0m01:00:01.890819 [debug] [Thread-1 (]: Began executing node model.linear_b_dbt.smoke_check
+[0m01:00:01.909670 [debug] [Thread-1 (]: Writing runtime sql for node "model.linear_b_dbt.smoke_check"
+[0m01:00:01.911051 [debug] [Thread-1 (]: Using duckdb connection "model.linear_b_dbt.smoke_check"
+[0m01:00:01.911325 [debug] [Thread-1 (]: On model.linear_b_dbt.smoke_check: BEGIN
+[0m01:00:01.911522 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m01:00:01.912155 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m01:00:01.912768 [debug] [Thread-1 (]: Using duckdb connection "model.linear_b_dbt.smoke_check"
+[0m01:00:01.913233 [debug] [Thread-1 (]: On model.linear_b_dbt.smoke_check: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "linear_b_dbt", "target_name": "dev", "node_id": "model.linear_b_dbt.smoke_check"} */
+
+  
+  create view "linear_b"."main"."smoke_check__dbt_tmp" as (
+    
+
+SELECT
+    COUNT(*) AS bronze_tablet_count
+FROM bronze_linear_b_tablets
+  );
+
+[0m01:00:01.914493 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m01:00:01.918603 [debug] [Thread-1 (]: Using duckdb connection "model.linear_b_dbt.smoke_check"
+[0m01:00:01.918855 [debug] [Thread-1 (]: On model.linear_b_dbt.smoke_check: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "linear_b_dbt", "target_name": "dev", "node_id": "model.linear_b_dbt.smoke_check"} */
+alter view "linear_b"."main"."smoke_check__dbt_tmp" rename to "smoke_check"
+[0m01:00:01.919595 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m01:00:01.925728 [debug] [Thread-1 (]: On model.linear_b_dbt.smoke_check: COMMIT
+[0m01:00:01.925954 [debug] [Thread-1 (]: Using duckdb connection "model.linear_b_dbt.smoke_check"
+[0m01:00:01.926125 [debug] [Thread-1 (]: On model.linear_b_dbt.smoke_check: COMMIT
+[0m01:00:01.928124 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m01:00:01.932775 [debug] [Thread-1 (]: Using duckdb connection "model.linear_b_dbt.smoke_check"
+[0m01:00:01.933112 [debug] [Thread-1 (]: On model.linear_b_dbt.smoke_check: /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "linear_b_dbt", "target_name": "dev", "node_id": "model.linear_b_dbt.smoke_check"} */
+
+      drop view if exists "linear_b"."main"."smoke_check__dbt_backup" cascade
+    
+[0m01:00:01.933684 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m01:00:01.935133 [debug] [Thread-1 (]: On model.linear_b_dbt.smoke_check: Close
+[0m01:00:01.936285 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '0b8f608c-93be-44be-acea-02a5d236fa30', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244BA56AFC0>]}
+[0m01:00:01.936699 [info ] [Thread-1 (]: 1 of 1 OK created sql view model main.smoke_check .............................. [[32mOK[0m in 0.05s]
+[0m01:00:01.937212 [debug] [Thread-1 (]: Finished running node model.linear_b_dbt.smoke_check
+[0m01:00:01.938306 [debug] [MainThread]: Using duckdb connection "master"
+[0m01:00:01.938532 [debug] [MainThread]: On master: BEGIN
+[0m01:00:01.938703 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m01:00:01.939163 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m01:00:01.939351 [debug] [MainThread]: On master: COMMIT
+[0m01:00:01.939514 [debug] [MainThread]: Using duckdb connection "master"
+[0m01:00:01.939666 [debug] [MainThread]: On master: COMMIT
+[0m01:00:01.939979 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m01:00:01.940167 [debug] [MainThread]: On master: Close
+[0m01:00:01.940397 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:00:01.940555 [debug] [MainThread]: Connection 'create_linear_b_main' was properly closed.
+[0m01:00:01.940699 [debug] [MainThread]: Connection 'list_linear_b_main' was properly closed.
+[0m01:00:01.940868 [debug] [MainThread]: Connection 'model.linear_b_dbt.smoke_check' was properly closed.
+[0m01:00:01.941043 [info ] [MainThread]: 
+[0m01:00:01.941356 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 0.14 seconds (0.14s).
+[0m01:00:01.941946 [debug] [MainThread]: Command end result
+[0m01:00:01.956112 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Learning\Agentic AI with Linear B\linear-b-agentic-data-platform\dbt\target\manifest.json
+[0m01:00:01.957653 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Learning\Agentic AI with Linear B\linear-b-agentic-data-platform\dbt\target\semantic_manifest.json
+[0m01:00:01.961299 [debug] [MainThread]: Wrote artifact RunExecutionResult to D:\Learning\Agentic AI with Linear B\linear-b-agentic-data-platform\dbt\target\run_results.json
+[0m01:00:01.961524 [info ] [MainThread]: 
+[0m01:00:01.961866 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:00:01.962174 [info ] [MainThread]: 
+[0m01:00:01.962493 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m01:00:01.963195 [debug] [MainThread]: Command `dbt run` succeeded at 01:00:01.963095 after 1.30 seconds
+[0m01:00:01.963451 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244BA98DD10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244BA90B020>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000244BA475050>]}
+[0m01:00:01.963719 [debug] [MainThread]: Flushing usage events
+[0m01:00:03.042540 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m01:00:21.031945 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019BAB77A270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019BA84EB110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019BACB77B10>]}
+
+
+============================== 01:00:21.034834 | 5df7460c-a148-409f-bd5f-e19e9cb4aba3 ==============================
+[0m01:00:21.034834 [info ] [MainThread]: Running with dbt=1.11.11
+[0m01:00:21.035330 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': '.', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt list --profiles-dir .', 'use_experimental_parser': 'False', 'log_path': 'D:\\Learning\\Agentic AI with Linear B\\linear-b-agentic-data-platform\\dbt\\logs'}
+[0m01:00:21.188652 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '5df7460c-a148-409f-bd5f-e19e9cb4aba3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019BABE99220>]}
+[0m01:00:21.251761 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '5df7460c-a148-409f-bd5f-e19e9cb4aba3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019BACBBA690>]}
+[0m01:00:21.253502 [info ] [MainThread]: Registered adapter: duckdb=1.10.1
+[0m01:00:21.434292 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m01:00:21.504441 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m01:00:21.504724 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m01:00:21.504912 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m01:00:21.520130 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '5df7460c-a148-409f-bd5f-e19e9cb4aba3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019BADC0E050>]}
+[0m01:00:21.554283 [debug] [MainThread]: Wrote artifact WritableManifest to D:\Learning\Agentic AI with Linear B\linear-b-agentic-data-platform\dbt\target\manifest.json
+[0m01:00:21.555903 [debug] [MainThread]: Wrote artifact SemanticManifest to D:\Learning\Agentic AI with Linear B\linear-b-agentic-data-platform\dbt\target\semantic_manifest.json
+[0m01:00:21.567505 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5df7460c-a148-409f-bd5f-e19e9cb4aba3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019BADC3E3F0>]}
+[0m01:00:21.568098 [info ] [MainThread]: linear_b_dbt.smoke.smoke_check
+[0m01:00:21.568758 [debug] [MainThread]: Command `dbt list` succeeded at 01:00:21.568644 after 0.64 seconds
+[0m01:00:21.568978 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019BACB5FE70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019BADE89C50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019BAE20CEF0>]}
+[0m01:00:21.569162 [debug] [MainThread]: Flushing usage events
+[0m01:00:22.663177 [debug] [MainThread]: An error was encountered while trying to flush usage events
