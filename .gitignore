@@ -1,0 +1,31 @@
+# Python virtual environments
+.venv/
+dbt/.venv/
+
+# dbt generated files
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Airflow logs
+airflow/logs/
+
+# Local environment files
+.env
+*.env
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# DuckDB temporary/write-ahead files
+*.duckdb.wal
+*.duckdb.tmp

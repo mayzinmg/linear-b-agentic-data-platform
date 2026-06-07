@@ -5,7 +5,8 @@ from datetime import datetime, timedelta
 
 import duckdb
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.bash import BashOperator
+from airflow.providers.standard.operators.python import PythonOperator
 
 PROJECT_DIR = Path(os.getenv("LINEAR_B_PROJECT_DIR","/opt/airflow/project"))
 DB_PATH = PROJECT_DIR / "linear_b.duckdb"
@@ -178,44 +179,23 @@ default_args=default_args,
         op_args=["01_create_bronze.sql"],
     )
 
-    create_silver=PythonOperator(
-        task_id="create_silver_layer",
-        python_callable= run_sql_file,
-        op_args=["02_create_silver.sql"],
-    )
-    create_gold= PythonOperator(
-        task_id="create_gold_layer",
-        python_callable=run_sql_file,
-        op_args=["03_create_gold.sql"]
-    )
     create_damos_bronze = PythonOperator(
         task_id="create_damos_bronze_layer",
         python_callable=run_sql_file,
         op_args=["04_create_bronze_damos.sql"],
     )
-
-    create_damos_silver = PythonOperator(
-        task_id="create_damos_silver_layer",
-        python_callable=run_sql_file,
-        op_args=["05_create_silver_damos.sql"],
-    )
-
-    create_damos_gold = PythonOperator(
-        task_id="create_damos_gold_layer",
-        python_callable=run_sql_file,
-        op_args=["06_create_gold_damos.sql"],
-    )
-
-    create_combined_enrichment = PythonOperator(
-        task_id="create_combined_enrichment_layer",
-        python_callable=run_sql_file,
-        op_args=["07_create_gold_tablet_damos_enrichment.sql"],
+    run_dbt_models = BashOperator(
+    task_id="run_dbt_models",
+    bash_command=(
+       "cd /opt/airflow/project/dbt && "
+        "rm -rf target logs && "
+        "dbt --no-partial-parse run --profiles-dir . && "
+        "dbt --no-partial-parse test --profiles-dir ."
+        ),
     )
     export_evidence = PythonOperator(
         task_id="export_pipeline_evidence",
         python_callable=export_pipeline_evidence,
     )
 
-    create_bronze >> create_silver >> create_gold
-    create_gold >> create_damos_bronze >> create_damos_silver >> create_damos_gold
-    create_damos_gold >> create_combined_enrichment >> export_evidence
+    create_bronze >> create_damos_bronze >> run_dbt_models >> export_evidence

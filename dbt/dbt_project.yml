@@ -9,4 +9,16 @@ model-paths: ["models"]
 models:
   linear_b_dbt:
     smoke:
+<<<<<<< HEAD
       +materialized: view
+=======
+      +materialized: view
+    staging:
+      +materialized: view
+    silver:
+      +materialized: table
+    gold:
+      +materialized: table
+    marts:
+      +materialized: table
+>>>>>>> 798d42a12c32a6cd837847abb8e9a0c30317dfde
