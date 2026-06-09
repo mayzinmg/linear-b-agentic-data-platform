@@ -15,6 +15,7 @@ FROM silver_linear_b_tablets
 GROUP BY tablet_series
 ORDER BY tablet_count DESC;
 
+
 CREATE OR REPLACE TABLE gold_site_series_summary AS
 SELECT
     site_code,

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ## Alternatives Considered
 
 Several alternatives were considered:
@@ -9,7 +9,7 @@ Several alternatives were considered:
 - Data Mesh provides useful thinking around data products and ownership, but it is more relevant to large organizations with multiple domain teams.
 
 The medallion architecture was selected because it provides a clear and understandable progression from raw data to cleaned data to analysis-ready outputs.
-=======
+
 # ADR 0002 — Use Medallion Architecture
 
 ## Context
@@ -40,4 +40,4 @@ The Gold layer provides analysis-ready summary tables. These tables are suitable
 This design makes the project easier to understand, test, document, and extend. It also supports a production-minded learning approach because each layer has a clear responsibility.
 
 For a small dataset, the medallion architecture may add more structure than strictly necessary. However, it helps demonstrate good data engineering practice and prepares the project for future extensions such as dbt, Airflow orchestration, DĀMOS integration, and an agentic AI interpretation layer.
->>>>>>> fd6d5e820dcd775c86a5a0f1113a05dd73d96764
+
